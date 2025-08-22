@@ -33,7 +33,7 @@ const DashboardPage: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 16, // Отступ между кнопками
+            gap: 16,
           }}
         >
           <Button
