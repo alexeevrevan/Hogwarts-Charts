@@ -1,7 +1,8 @@
+import { apiConfig } from "../config/apiConfig";
 import type { Character } from "../models/character.model";
 import { parseDate, isDateInRange } from "../utils/dateUtils";
 
-const API_URL: string = "https://hp-api.onrender.com/api/characters";
+const API_URL: string = `${apiConfig.baseUrl}${apiConfig.endpoints.characters}`;
 
 export const fetchAllCharacters = async (): Promise<Character[]> => {
   try {
