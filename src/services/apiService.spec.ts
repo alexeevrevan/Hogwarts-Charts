@@ -40,7 +40,6 @@ const mockCharacters: Character[] = [
 ];
 
 describe("API Service", () => {
-  // Тесты для fetchAllCharacters
   describe("fetchAllCharacters", () => {
     beforeEach(() => {
       (fetch as jest.Mock).mockClear();

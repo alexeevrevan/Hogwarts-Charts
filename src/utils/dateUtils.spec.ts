@@ -6,7 +6,7 @@ describe("Date Utilities", () => {
       const result = parseDate("31-12-2023");
       expect(result).toBeInstanceOf(Date);
       expect(result?.getFullYear()).toBe(2023);
-      expect(result?.getMonth()).toBe(11); // месяцы в JS с 0
+      expect(result?.getMonth()).toBe(11);
       expect(result?.getDate()).toBe(31);
     });
 
@@ -42,7 +42,7 @@ describe("Date Utilities", () => {
     test("форматирует дату в русской локали", () => {
       const date = new Date("2023-12-31");
       const result = formatDate(date);
-      expect(result).toMatch(/\d{2}\.\d{2}\.\d{4}/); // Формат ДД.ММ.ГГГГ
+      expect(result).toMatch(/\d{2}\.\d{2}\.\d{4}/);
       expect(result).toBe("31.12.2023");
     });
 

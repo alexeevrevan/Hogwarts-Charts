@@ -1,4 +1,3 @@
-import React from "react";
 import HogwartsChart from "./components/HogwartsChart/HogwartsChart";
 import "./App.css";
 
