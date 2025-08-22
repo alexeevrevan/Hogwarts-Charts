@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./HogwartsChart.module.css";
 import loadingStyles from "./LoadingError.module.css";
-import { useHogwartsData } from "../../hooks/useHogwartsData";
 import { ChartStatistics } from "../ChartStatistics/ChartStatistics";
 import DateFilter from "../DateFilter/DateFilter";
 import { HousesPieChart } from "../HousesPieChart/HousesPieChart";
+import { useHogwartsData } from "../../hooks/useHogwartsData";
 
 const HogwartsChart: React.FC = () => {
   const {
