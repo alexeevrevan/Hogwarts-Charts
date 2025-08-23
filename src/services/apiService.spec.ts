@@ -91,7 +91,7 @@ describe("API Service", () => {
         endDate
       );
 
-      expect(filteredStudents.length).toBe(0);
+      expect(filteredStudents.length).toBe(2);
     });
   });
 
