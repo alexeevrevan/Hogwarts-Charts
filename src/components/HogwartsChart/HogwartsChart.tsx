@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./HogwartsChart.module.css";
 import loadingStyles from "./LoadingError.module.css";
 import { ChartStatistics } from "../ChartStatistics/ChartStatistics";
@@ -7,6 +8,7 @@ import { HousesPieChart } from "../HousesPieChart/HousesPieChart";
 import { useHogwartsData } from "../../hooks/useHogwartsData";
 
 const HogwartsChart: React.FC = () => {
+  const { t } = useTranslation("common");
   const {
     startDate,
     endDate,
@@ -25,13 +27,17 @@ const HogwartsChart: React.FC = () => {
   if (loading) {
     return (
       <div className={loadingStyles.loadingContainer}>
-        Загрузка данных о студентах Хогвартса...
+        {t("hogwartsChart.loading")}
       </div>
     );
   }
 
   if (error) {
-    return <div className={loadingStyles.errorContainer}>Ошибка: {error}</div>;
+    return (
+      <div className={loadingStyles.errorContainer}>
+        {t("common.error")}: {error}
+      </div>
+    );
   }
 
   const chartData = prepareChartData();
@@ -39,11 +45,9 @@ const HogwartsChart: React.FC = () => {
   return (
     <div className={styles.chartContainer}>
       <header className={styles.appHeader}>
-        <h1 className={styles.appHeaderTitle}>
-          Студенты Хогвартса по факультетам
-        </h1>
+        <h1 className={styles.appHeaderTitle}>{t("hogwartsChart.title")}</h1>
         <p className={styles.appHeaderSubtitle}>
-          Используйте фильтры для отображения студентов по дате рождения
+          {t("hogwartsChart.subtitle")}
         </p>
       </header>
 

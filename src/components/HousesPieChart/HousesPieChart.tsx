@@ -1,5 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
+import { useTranslation } from "react-i18next";
 import styles from "./ChartWrapper.module.css";
 
 interface ChartData {
@@ -16,6 +17,8 @@ interface HousesPieChartProps {
 export const HousesPieChart: React.FC<HousesPieChartProps> = ({
   chartData,
 }) => {
+  const { t } = useTranslation("common");
+
   const renderLabel = (props: Partial<ChartData>) => {
     const { name, percentage, count } = props;
     return `${name} (${count} - ${percentage}%)`;
@@ -23,9 +26,7 @@ export const HousesPieChart: React.FC<HousesPieChartProps> = ({
 
   return (
     <div className={styles.chartWrapper}>
-      <h2 className={styles.chartTitle}>
-        Распределение студентов по факультетам
-      </h2>
+      <h2 className={styles.chartTitle}>{t("pieChart.title")}</h2>
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>
           <Pie

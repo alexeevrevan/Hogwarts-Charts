@@ -1,10 +1,12 @@
 import React from "react";
 import { Button, Card } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AuthService } from "../services/authService";
 
 const DashboardPage: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation("common");
 
   const handleLogout = () => {
     AuthService.logout();
@@ -22,7 +24,7 @@ const DashboardPage: React.FC = () => {
       }}
     >
       <Card
-        title="Панель управления"
+        title={t("dashboard.title")}
         style={{
           width: 400,
           textAlign: "center",
@@ -42,10 +44,10 @@ const DashboardPage: React.FC = () => {
             block
             onClick={() => navigate("/chart")}
           >
-            Перейти к графику
+            {t("dashboard.goToChart")}
           </Button>
           <Button danger size="large" block onClick={handleLogout}>
-            Выйти
+            {t("dashboard.logout")}
           </Button>
         </div>
       </Card>
