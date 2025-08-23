@@ -2,24 +2,14 @@ import React from "react";
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
 import { useTranslation } from "react-i18next";
 import styles from "./ChartWrapper.module.css";
+import type { IHousesPieChartProps, IChartData } from "./HouseChart.model";
 
-interface ChartData {
-  name: string;
-  count: number;
-  color: string;
-  percentage: number;
-}
-
-interface HousesPieChartProps {
-  chartData: ChartData[];
-}
-
-export const HousesPieChart: React.FC<HousesPieChartProps> = ({
+export const HousesPieChart: React.FC<IHousesPieChartProps> = ({
   chartData,
 }) => {
   const { t } = useTranslation("common");
 
-  const renderLabel = (props: Partial<ChartData>) => {
+  const renderLabel = (props: Partial<IChartData>) => {
     const { name, percentage, count } = props;
     return `${name} (${count} - ${percentage}%)`;
   };
@@ -39,7 +29,7 @@ export const HousesPieChart: React.FC<HousesPieChartProps> = ({
             dataKey="count"
             label={renderLabel}
           >
-            {chartData.map((entry) => (
+            {chartData.map((entry: IChartData) => (
               <Cell key={`cell-${entry.name}`} fill={entry.color} />
             ))}
           </Pie>

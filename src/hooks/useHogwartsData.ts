@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { HOUSES } from "../constants/houses.constant";
-import type { Character } from "../models/character.model";
+import type { ICharacter } from "../models/character.model";
 import { fetchAllCharacters, filterStudents } from "../services/apiService";
+import type { IHouse } from "../models/houses.model";
 
-interface ChartData {
+interface IChartData {
   name: string;
   count: number;
   color: string;
@@ -11,8 +12,8 @@ interface ChartData {
 }
 
 export const useHogwartsData = () => {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [filteredStudents, setFilteredStudents] = useState<Character[]>([]);
+  const [characters, setCharacters] = useState<ICharacter[]>([]);
+  const [filteredStudents, setFilteredStudents] = useState<ICharacter[]>([]);
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
@@ -58,13 +59,13 @@ export const useHogwartsData = () => {
     setFilteredStudents(characters);
   };
 
-  const prepareChartData = (): ChartData[] => {
+  const prepareChartData = (): IChartData[] => {
     const totalStudents = filteredStudents.filter(
       (s) => s.hogwartsStudent
     ).length;
 
     return Object.values(HOUSES)
-      .map((house) => {
+      .map((house: IHouse) => {
         const count = filteredStudents.filter(
           (student) => student.house === house.name && student.hogwartsStudent
         ).length;
@@ -94,7 +95,9 @@ export const useHogwartsData = () => {
     handleFilter,
     handleReset,
     prepareChartData,
-    totalStudents: filteredStudents.filter((s) => s.hogwartsStudent).length,
-    totalStaff: filteredStudents.filter((s) => s.hogwartsStaff).length,
+    totalStudents: filteredStudents.filter((s: ICharacter) => s.hogwartsStudent)
+      .length,
+    totalStaff: filteredStudents.filter((s: ICharacter) => s.hogwartsStaff)
+      .length,
   };
 };

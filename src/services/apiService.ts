@@ -1,10 +1,10 @@
 import { apiConfig } from "../config/apiConfig";
-import type { Character } from "../models/character.model";
+import type { ICharacter } from "../models/character.model";
 import { parseDate, isDateInRange } from "../utils/dateUtils";
 
 const API_URL: string = `${apiConfig.baseUrl}${apiConfig.endpoints.characters}`;
 
-export const fetchAllCharacters = async (): Promise<Character[]> => {
+export const fetchAllCharacters = async (): Promise<ICharacter[]> => {
   try {
     const response: Response = await fetch(API_URL);
     if (!response.ok) {
@@ -18,11 +18,11 @@ export const fetchAllCharacters = async (): Promise<Character[]> => {
 };
 
 export const filterStudents = (
-  characters: Character[],
+  characters: ICharacter[],
   startDate: Date,
   endDate: Date
-): Character[] => {
-  return characters.filter((character: Character) => {
+): ICharacter[] => {
+  return characters.filter((character: ICharacter) => {
     if (!character.hogwartsStudent && !character.hogwartsStaff) {
       return false;
     }
@@ -41,9 +41,9 @@ export const filterStudents = (
 };
 
 export const groupStudentsByHouse = (
-  students: Character[]
-): Record<string, Character[]> => {
-  return students.reduce<Record<string, Character[]>>((acc, student) => {
+  students: ICharacter[]
+): Record<string, ICharacter[]> => {
+  return students.reduce<Record<string, ICharacter[]>>((acc, student) => {
     const house = student.house || "Unknown";
 
     if (!acc[house]) {
@@ -57,7 +57,7 @@ export const groupStudentsByHouse = (
 };
 
 export const countStudentsByHouse = (
-  students: Character[]
+  students: ICharacter[]
 ): Record<string, number> => {
   const groupedStudents = groupStudentsByHouse(students);
 

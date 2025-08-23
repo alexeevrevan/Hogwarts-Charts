@@ -10,7 +10,7 @@ export class AuthService {
     return false;
   }
 
-  static logout() {
+  static logout(): void {
     localStorage.removeItem("isAuthenticated");
   }
 

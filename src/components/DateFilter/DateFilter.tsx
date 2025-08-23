@@ -1,17 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./DateFilter.module.css";
+import type { IDateFilterProps } from "./DataFilter.model";
 
-interface DateFilterProps {
-  startDate?: string;
-  endDate?: string;
-  onStartDateChange?: (date: string) => void;
-  onEndDateChange?: (date: string) => void;
-  onFilter?: () => void;
-  onReset?: () => void;
-}
-
-const DateFilter: React.FC<DateFilterProps> = ({
+const DateFilter: React.FC<IDateFilterProps> = ({
   startDate = "",
   endDate = "",
   onStartDateChange = () => {},

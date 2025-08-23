@@ -1,14 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./ChartStatistics.module.css";
+import type { IChartStatisticsProps } from "./Chart.model";
 
-interface ChartStatisticsProps {
-  totalStudents: number;
-  totalStaff: number;
-  totalFiltered: number;
-}
-
-export const ChartStatistics: React.FC<ChartStatisticsProps> = ({
+export const ChartStatistics: React.FC<IChartStatisticsProps> = ({
   totalStudents,
   totalStaff,
   totalFiltered,

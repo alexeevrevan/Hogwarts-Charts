@@ -1,6 +1,6 @@
-export interface Character {
+export interface ICharacter {
   id?: string;
-  name: string;
+  name?: string;
   alternateNames?: string[];
   species?: string;
   gender?: string;
@@ -17,8 +17,8 @@ export interface Character {
     length?: number;
   };
   patronus?: string;
-  hogwartsStudent: boolean;
-  hogwartsStaff: boolean;
+  hogwartsStudent?: boolean;
+  hogwartsStaff?: boolean;
   actor?: string;
   alternateActors?: string[];
   alive?: boolean;

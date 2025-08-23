@@ -4,11 +4,11 @@ import {
   groupStudentsByHouse,
   countStudentsByHouse,
 } from "./apiService";
-import type { Character } from "../models/character.model";
+import type { ICharacter } from "../models/character.model";
 
 global.fetch = jest.fn();
 
-const mockCharacters: Character[] = [
+const mockCharacters: ICharacter[] = [
   {
     name: "Harry Potter",
     house: "Gryffindor",
@@ -85,7 +85,7 @@ describe("API Service", () => {
             hogwartsStudent: true,
             hogwartsStaff: false,
             dateOfBirth: "",
-          } as Character,
+          } as ICharacter,
         ],
         startDate,
         endDate
@@ -113,7 +113,7 @@ describe("API Service", () => {
           hogwartsStudent: true,
           hogwartsStaff: false,
           house: undefined,
-        } as Character,
+        } as ICharacter,
       ];
       const groupedStudents = groupStudentsByHouse(studentsWithoutHouse);
 
